@@ -1,0 +1,39 @@
+---
+layout: post
+title: seperate profile
+---
+
+# properties, yml 둘 다 있을 경우
+yml 파일 우선 로드
+
+# 여러개의 설정파일 사용
+```
+    application.yml
+        ex) spring.profile.active: [local or dev]
+    spring-[name].yml
+    ex) 
+    application-local.yml
+    application-dev.yml
+```
+
+# 배포할 war 생성
+maven clean -> package -> deploy
+target 디렉토리에 jar 파일 생성
+
+# profile 실행 우선순위
+java -jar 실행할때 아래와 같이 옵션을 붙여주면 우선순위가 높아짐. 
+--spring.profile.active=dev
+
+# jar war
+jar(Java Archive)
+java 어플리케이션이 동작할 수 있도록 자바 프로젝트를 압축한 파일.
+(실제로 jar파일은 플랫폼에 귀속되는 점만 제외하면 win zip파일과 같은 구조)
+
+war(Web Application Archive)
+웹 어플리케이션 압축 파일 포맷
+war파일을 실행하려면 웹서버(WEB) 또는 웹 컨테이너(WAS) 필요
+
+# pom.xml에서 jar war 선택
+```
+추가 => <packaging>[jar or war]</packaging> 
+```
